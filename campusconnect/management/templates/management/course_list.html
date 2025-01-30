@@ -1,0 +1,39 @@
+{% extends 'management/base.html' %}
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<h2>Course List</h2>
+
+{% if courses %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Code</th>
+                <th>Credits</th>
+                <th>Faculty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></td>
+                <td>{{ course.code }}</td>
+                <td>{{ course.credits }}</td>
+                <td>
+                    {% if course.faculty %}
+                        {{ course.faculty.first_name }} {{ course.faculty.last_name }}
+                    {% else %}
+                        <span style="color: red; font-weight: bold;">Error: No Faculty Assigned</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No courses found.</p>
+{% endif %}
+
+<a href="{% url 'course_form' %}" class="btn btn-primary">Add New Course</a>
+{% endblock %}

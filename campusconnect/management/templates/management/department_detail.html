@@ -1,0 +1,12 @@
+{% extends 'management/base.html' %}
+
+{% block title %}Department Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Department Details</h2>
+    <p><strong>Name:</strong> {{ department.name }}</p>
+    <p><strong>Head:</strong> {{ department.head }}</p>
+    <a href="{% url 'department_list' %}" class="btn btn-secondary">Back to Departments</a>
+</div>
+{% endblock %}

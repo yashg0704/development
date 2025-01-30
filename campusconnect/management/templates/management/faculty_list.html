@@ -1,0 +1,36 @@
+{% extends "management/base.html" %}
+
+{% block content %}
+    <h2>Faculty List</h2>
+    
+    {% if faculties %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Hire Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for faculty in faculties %}
+                    <tr>
+                        <td>{{ faculty.first_name }} {{ faculty.last_name }}</td>
+                        <td>{{ faculty.email }}</td>
+                        <td>{{ faculty.department.name }}</td>
+                        <td>{{ faculty.hire_date }}</td>
+                        <td>
+                            <a href="{% url 'faculty_detail' faculty.id %}">View</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No faculty members found.</p>
+    {% endif %}
+
+    <a href="{% url 'faculty_form' %}">Add New Faculty</a>
+{% endblock %}

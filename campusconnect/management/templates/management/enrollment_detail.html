@@ -1,0 +1,13 @@
+{% extends 'management/base.html' %}
+
+{% block title %}Enrollment Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Enrollment Details</h2>
+    <p><strong>Student:</strong> {{ enrollment.student }}</p>
+    <p><strong>Course:</strong> {{ enrollment.course }}</p>
+    <p><strong>Enrollment Date:</strong> {{ enrollment.enrollment_date }}</p>
+    <a href="{% url 'enrollment_list' %}" class="btn btn-secondary">Back to Enrollments</a>
+</div>
+{% endblock %}

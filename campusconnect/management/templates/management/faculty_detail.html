@@ -1,0 +1,14 @@
+{% extends 'management/base.html' %}
+
+{% block title %}Faculty Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Faculty Details</h2>
+    <p><strong>Name:</strong> {{ faculty.first_name }} {{ faculty.last_name }}</p>
+    <p><strong>Email:</strong> {{ faculty.email }}</p>
+    <p><strong>Department:</strong> {{ faculty.department.name }}</p>
+    <p><strong>Hire Date:</strong> {{ faculty.hire_date }}</p>
+    <a href="{% url 'faculty_list' %}" class="btn btn-secondary">Back to Faculty</a>
+</div>
+{% endblock %}
